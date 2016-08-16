@@ -6,17 +6,17 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Installing Dyno Network Stats package"
+echo "-----> Installing Dyno Socket Stats package"
 
 BUILD_DIR=$1
 CACHE_DIR=$2
 
 mkdir -p $BUILD_DIR/bin
-cp dyno-network-stats $BUILD_DIR/bin/
+cp dyno-socket-stats $BUILD_DIR/bin/
 
-PROFILE_PATH="$BUILD_DIR/.profile.d/dyno-network-stats.sh"
+PROFILE_PATH="$BUILD_DIR/.profile.d/dyno-socket-stats.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 
-echo 'if [[ ! $DYNO =~ ^run\..*$ ]]; then /app/bin/dyno-network-stats & fi' >> $PROFILE_PATH
+echo 'if [[ ! $DYNO =~ ^run\..*$ ]]; then /app/bin/dyno-socket-stats & fi' >> $PROFILE_PATH
 
 echo 'Install completed' | indent
